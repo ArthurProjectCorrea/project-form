@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useUser } from "@clerk/nextjs"
+import { useUser } from "@clerk/nextjs";
 
 function getHoraAtual(): string {
   const agora = new Date();
@@ -31,12 +31,11 @@ function formatTelefone(telefone: string): string {
 }
 
 export default function PrintPage() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>(null);
   const [dataAtual, setDataAtual] = useState("");
   const [proximaTerca, setProximaTerca] = useState("");
   const [horaAtual, setHoraAtual] = useState("");
-
-  
 
   useEffect(() => {
     try {
@@ -111,10 +110,10 @@ export default function PrintPage() {
   const workSituation = data?.workSituation as WorkSituationKey;
   const firstSignature = data?.firstSignature as firstSignatureKey;
 
-  const { user, isLoaded, isSignedIn } = useUser()
+  const { user, isLoaded, isSignedIn } = useUser();
 
-  if (!isLoaded) return <div>Carregando...</div>
-  if (!isSignedIn) return <div>Usuário não está logado</div>
+  if (!isLoaded) return <div>Carregando...</div>;
+  if (!isSignedIn) return <div>Usuário não está logado</div>;
 
   if (!data || !proximaTerca)
     return <p className="text-center mt-10">Carregando dados...</p>;
@@ -233,7 +232,9 @@ export default function PrintPage() {
         <p>
           CUIABÁ, {dataAtual} as {horaAtual}
         </p>
-        <p className="mt-2 font-bold capitalize">{user.firstName} {user.lastName}</p>
+        <p className="mt-2 font-bold capitalize">
+          {user.firstName} {user.lastName}
+        </p>
         <p>Depen</p>
       </div>
     </div>
