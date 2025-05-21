@@ -36,7 +36,7 @@ export default function RootLayout({
         baseTheme: neobrutalism,
       }}
     >
-      <html lang="en">
+      <html lang="pt-br">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
