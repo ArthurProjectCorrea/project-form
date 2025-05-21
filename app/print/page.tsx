@@ -63,7 +63,7 @@ export default function PrintPage() {
       try {
         const saved = localStorage.getItem("print-data");
         if (saved) {
-          const parsedData = JSON.parse(saved);
+          const parsedData = JSON.parse(saved) as Data;
           setData(parsedData);
         }
       } catch (err) {
@@ -90,7 +90,9 @@ export default function PrintPage() {
       const mesTerca = meses[proximaTercaData.getMonth()];
       const anoTerca = proximaTercaData.getFullYear();
 
-      setProximaTerca(`${diaTerca} de ${mesTerca.toUpperCase()} de ${anoTerca}`);
+      setProximaTerca(
+        `${diaTerca} de ${mesTerca.toUpperCase()} de ${anoTerca}`
+      );
     }
   }, []);
 
@@ -173,7 +175,8 @@ export default function PrintPage() {
 
       {/* Situação de trabalho */}
       <div className="mt-2 font-semibold">
-        {workSituationQuestions[data.workSituation] ?? "Situação não identificada"}
+        {workSituationQuestions[data.workSituation] ??
+          "Situação não identificada"}
       </div>
 
       {/* Admoestação */}
@@ -190,7 +193,8 @@ export default function PrintPage() {
 
       {/* Primeira assinatura */}
       <div className="mt-2 font-semibold">
-        {firstSignatureQuestions[data.firstSignature] ?? "Situação não identificada"}
+        {firstSignatureQuestions[data.firstSignature] ??
+          "Situação não identificada"}
       </div>
 
       {/* Finalização */}
@@ -210,9 +214,9 @@ export default function PrintPage() {
 
       {/* Observação */}
       <p className="italic text-ms text-center font-bold">
-        COMPARECIMENTO: Letras A I- de 01 a 14ª e letras J a Z, de 15 a 30/31
-        do mês - Serão distribuídas 250 senhas diárias – NÃO DEIXE PARA A
-        ÚLTIMA HORA
+        COMPARECIMENTO: Letras A I- de 01 a 14ª e letras J a Z, de 15 a 30/31 do
+        mês - Serão distribuídas 250 senhas diárias – NÃO DEIXE PARA A ÚLTIMA
+        HORA
       </p>
 
       {/* Rodapé */}
